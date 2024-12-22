@@ -1,7 +1,6 @@
 from collections import Counter
 import heapq
 
-
 class Node:
     """Класс для узла дерева Хаффмана"""
     def __init__(self, char, freq):
@@ -35,18 +34,16 @@ def build_codes(node, prefix="", code_map=None):
     """Создает коды для символов на основе дерева"""
     if code_map is None:
         code_map = {}
-
     if node is not None:
         if node.char is not None:
             code_map[node.char] = prefix
         build_codes(node.left, prefix + "0", code_map)
         build_codes(node.right, prefix + "1", code_map)
-
     return code_map
 
 
 def huffman_encode(text):
-    """Кодирование строки по алгоритму Хаффмана"""
+    """Кодирование строк по алгоритму Хаффмана"""
     if not text:
         return "", {}
 
